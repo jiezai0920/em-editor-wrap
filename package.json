@@ -1,12 +1,12 @@
 {
   "name": "em-ueditor-wrap",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "files": [
     "dist/lib/*"
   ],
-  "main": "dist/lib/editor.js",
-  "unpkg": "dist/lib/editor.js",
-  "module": "dist/lib/editor.esm.js",
+  "main": "dist/lib/em-ueditor-wrap.js",
+  "unpkg": "dist/lib/em-ueditor-wrap.js",
+  "module": "dist/lib/em-ueditor-wrap.esm.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
