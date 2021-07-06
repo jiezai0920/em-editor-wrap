@@ -1,6 +1,6 @@
 {
   "name": "em-ueditor-wrap",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "files": [
     "dist/lib/*"
   ],
@@ -25,6 +25,8 @@
   },
   "devDependencies": {
     "@vue/compiler-sfc": "3.0.11",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-esbuild": "2.5.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-scss": "2.6.0",
