@@ -1,8 +1,16 @@
 {
   "name": "em-ueditor-wrap",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "files": [
-    "dist/*"
+    "dist/*",
+    "src",
+    "node_modules"
+  ],
+  "keywords": [
+    "vue",
+    "vue3",
+    "em-ueditor-wrap",
+    "editor"
   ],
   "main": "dist/em-ueditor-wrap.js",
   "unpkg": "dist/em-ueditor-wrap.js",
