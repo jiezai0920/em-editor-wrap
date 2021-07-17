@@ -1,6 +1,6 @@
 {
   "name": "em-ueditor-wrap",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "files": [
     "dist/*",
     "src",
@@ -16,7 +16,7 @@
   "unpkg": "dist/em-ueditor-wrap.js",
   "module": "dist/em-ueditor-wrap.esm.js",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "build:npm": "rollup -c"
   },
@@ -24,6 +24,8 @@
     "node-sass": "npm:sass@1.26.11"
   },
   "dependencies": {
+    "@fe6/water-pro": "^3.9.4",
+    "axios": "^0.21.1",
     "github-markdown-css": "4.0.0",
     "marked": "1.1.1",
     "prismjs": "1.21.0",
@@ -31,6 +33,7 @@
     "vue-router": "4.0.0-beta.3"
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "@vue/compiler-sfc": "3.0.11",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
