@@ -1,6 +1,6 @@
 import { VueUeditorWrap } from 'vue-ueditor-wrap/es/index.js';
 import Material from "../Material/Material.vue";
-import { defineComponent, ref, reactive, onMounted, watch} from 'vue';
+import { ref, reactive, onMounted, watch} from 'vue';
 
 const editorDependencies = reactive([
   'ueditor.config.js',
@@ -10,7 +10,7 @@ const editorDependencies = reactive([
   'xiumi-ue-v5.css',
 ]);
 
-export default defineComponent({
+export default {
   emits: ['update:value', 'success', 'error', 'close'],
   props:{
     value: String,
@@ -64,7 +64,7 @@ export default defineComponent({
     VueUeditorWrap,
     Material,
   },
-  setup(props:any, { emit }: any) {
+  setup(props, { emit }) {
     const myexplain =  ref('');
     //静态文件地址
     let UEDITOR_HOME_URL = ref('');
@@ -80,13 +80,13 @@ export default defineComponent({
       mode: 'observer',
     });
 
-    const categoryType = ref<string>('');
-    const showPop = ref<boolean>(false);
-    const UEditor = reactive<any>({
+    const categoryType = ref('');
+    const showPop = ref(false);
+    const UEditor = reactive({
       editorInstance: {},
     });
-    const itemKey = ref<string | number>('');
-    const addXiumiDialog = (editorInstance: any) => {
+    const itemKey = ref('');
+    const addXiumiDialog = (editorInstance) => {
       UEditor.editorInstance = editorInstance;
       editorInstance.commands.addimgv2 = {
         execCommand() {
@@ -109,11 +109,11 @@ export default defineComponent({
     };
 
 
-    const success = (str:any) => {
+    const success = (str) => {
       emit('success', str);
     };
   
-    const error = (str:any) => {
+    const error = (str) => {
       emit('error', str);
     };
     
@@ -121,7 +121,7 @@ export default defineComponent({
       showPop.value = false;
       emit('close');
     };
-    const commitSuccess = (data:any) => {
+    const commitSuccess = (data) => {
       if (data.media_type === 'audio') {
         const str = `<iframe style="width: 100%;border: none;height: 72px;" src="https://cdn.dev.mosh.cn/assets/iframe/ueditor-media/index.html?url=${data.media_meta.media_url}&type=2&name=${data.media_meta.name}" allowfullscreen="true"></iframe>`;
         UEditor.editorInstance.execCommand('inserthtml', str);
@@ -161,4 +161,4 @@ export default defineComponent({
       commitSuccess,
     };
   },
-});
+};

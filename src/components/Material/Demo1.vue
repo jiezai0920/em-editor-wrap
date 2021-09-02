@@ -22,7 +22,7 @@
     >
   </Material>
 </template>
-<script lang="ts">
+<script>
 import {ref} from "vue";
 import { Material } from "../../lib/index";
 
@@ -46,7 +46,7 @@ export default {
     const category_type = ref('');
 
     const headers = ref({})
-    const shouMater = (data : any) => {
+    const shouMater = (data) => {
       showPop.value = true;
       category_type.value = data;
       console.log(category_type.value,';category_type.value')
@@ -70,6 +70,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
