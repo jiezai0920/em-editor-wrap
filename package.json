@@ -15,6 +15,7 @@
   "main": "dist/em-ueditor-wrap.js",
   "unpkg": "dist/em-ueditor-wrap.js",
   "module": "dist/em-ueditor-wrap.esm.js",
+  "typings": "dist/lib/index.d.ts",
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -33,6 +34,8 @@
     "vue-router": "4.0.0-beta.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-json": "^4.1.0",
     "@vue/compiler-sfc": "^3.2.7",
     "rollup-plugin-babel": "^4.4.0",
@@ -41,8 +44,10 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-scss": "2.6.0",
     "rollup-plugin-terser": "7.0.2",
-    "rollup-plugin-vue": "6.0.0-beta.10",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-vue": "^6.0.0",
     "sass": "1.32.11",
+    "typescript": "^4.4.2",
     "vite": "1.0.0-rc.1",
     "vue-ueditor-wrap": "3.x"
   }

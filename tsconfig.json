@@ -5,6 +5,7 @@
       "strict": false,
       "jsx": "preserve",
       "moduleResolution": "node"
-    }
-  }
+    },
+    "exclude": ["node_modules", "dist"]
+}
   

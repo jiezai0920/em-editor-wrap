@@ -12,7 +12,7 @@ const components = [
 
 const install = function(app: App) {
     components.forEach((component:any) => {
-      app.use(component);
+      app.component(component.name, component);
     });
     return app;
 };
