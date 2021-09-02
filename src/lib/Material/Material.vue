@@ -180,5 +180,5 @@
   </div>
   </div>
 </template>
-<script lang="ts" src="./Material.ts"></script>
+<script src="./Material.js"></script>
 <style lang="scss" src="./Material.scss"></style>

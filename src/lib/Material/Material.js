@@ -1,9 +1,9 @@
-import { defineComponent, onMounted, watch, ref, reactive } from 'vue';
+import { onMounted, watch, ref, reactive } from 'vue';
 import Axios from 'axios';
 import { Progress, Pagination, Checkbox, message} from '@fe6/water-pro';
 
 const pageSize = 6;
-export default defineComponent({
+export default {
   components: {
     Progress,
     Pagination,
@@ -57,8 +57,8 @@ export default defineComponent({
       type: String,
     },
   },
-  setup(props:any, { emit }: any) {
-    const pad = (num:any) => {
+  setup(props, { emit }) {
+    const pad = (num) => {
       let len = num.toString().length;
       while (len < 2) {
         num = `0${num}`;
@@ -66,38 +66,38 @@ export default defineComponent({
       }
       return num;
     };
-    const format = (interval:number) => {
+    const format = (interval) => {
       interval |= 0;
       const minute = interval / 60 | 0;
       const second = pad(interval % 60);
       return `${minute}:${second}`;
     };
 
-    const maskShow = ref<boolean>(false);
-    const sizeMax = ref<any>({
+    const maskShow = ref(false);
+    const sizeMax = ref({
       images: 10,
       audio: 200,
       video: 500,
     });
 
 
-    const uploadText = ref<string>('');
-    const uploadTextImage = ref<string>('上传封面');
-    const fileNameImg = ref<string>('');
-    const fileName = ref<string>('');
-    const imgUrl = ref<string>('');
-    const valueUpload = ref<number>(0);
-    const loadFlag = ref<boolean>(true);
-    const btnFlag = ref<boolean>(true);
-    const showMaskLoad = ref<boolean>(false);
-    const loadFlagSucai = ref<boolean>(true);
-    const media_category_id = ref<number | string>('');
-    const menuIndex = ref<number>(0);
-    const currentPage = ref<number>(1);
-    const categoryArray = ref<[] | any>([]);
-    const lastPage = ref<number>(0);
-    const pageTotal = ref<number>(0);
-    const materialArray = ref<[] | any>([]);
+    const uploadText = ref('');
+    const uploadTextImage = ref('上传封面');
+    const fileNameImg = ref('');
+    const fileName = ref('');
+    const imgUrl = ref('');
+    const valueUpload = ref(0);
+    const loadFlag = ref(true);
+    const btnFlag = ref(true);
+    const showMaskLoad = ref(false);
+    const loadFlagSucai = ref(true);
+    const media_category_id = ref('');
+    const menuIndex = ref(0);
+    const currentPage = ref(1);
+    const categoryArray = ref([]);
+    const lastPage = ref(0);
+    const pageTotal = ref(0);
+    const materialArray = ref([]);
 
 
     const close = () => {
@@ -112,7 +112,7 @@ export default defineComponent({
 
     const commitMask = () => {
       let data = {};
-      materialArray.value.forEach((item: any) => {
+      materialArray.value.forEach((item) => {
         if (item.checked) {
           data = item;
         }
@@ -134,7 +134,7 @@ export default defineComponent({
     };
 
     const changeCheck = (data) => {
-      materialArray.value.forEach((item:any) => {
+      materialArray.value.forEach((item) => {
         item.checked = false;
       });
       data.checked = !data.checked;
@@ -150,7 +150,7 @@ export default defineComponent({
         url: `${props.materialAction}?${url}`,
         headers: props.headers,
         withCredentials: props.domain === 'evente.cn',
-      }).then((result:any) => {
+      }).then((result) => {
         if (result.data.code === 10000) {
           lastPage.value = result.data.data.pagination.lastPage;
           pageTotal.value = 10;
@@ -173,7 +173,7 @@ export default defineComponent({
     };
 
     //点击菜单 切换
-    const changeListIndex = (index: any, data: any) => {
+    const changeListIndex = (index, data) => {
       loadFlagSucai.value = true;
       menuIndex.value = index;
       media_category_id.value = data.id;
@@ -181,7 +181,7 @@ export default defineComponent({
     }
 
     //分页方法
-    const changePage = (page:number) => {
+    const changePage = (page) => {
       currentPage.value = page;
       loadFlagSucai.value = true;
       getmaterial();
@@ -196,7 +196,7 @@ export default defineComponent({
         url: `${props.menuAction}?materialType=${props.category_type}`,
         headers: props.headers,
         withCredentials: props.domain === 'evente.cn',
-      }).then((res:any) => {
+      }).then((res) => {
         const result = res.data;
         if (result.code === 10000) {
           result.data.forEach((item) => {
@@ -227,8 +227,8 @@ export default defineComponent({
       showMaskLoad.value = false;
     };
 
-    const commiting = ref<boolean>(false);
-    const videoId = ref<number | string>('');
+    const commiting = ref(false);
+    const videoId = ref('');
     const suerAdd = () => {
       if (commiting.value) {
         return;
@@ -253,9 +253,9 @@ export default defineComponent({
       });
     };
 
-    const postFilesImages = ref<[]>([]);
-    const canUpload = ref<boolean>(true);
-    const postHandle = (file: any, index:number) => {
+    const postFilesImages = ref([]);
+    const canUpload = ref(true);
+    const postHandle = (file, index) => {
       if (file.size > 10000 * 1024) {
         message.error('图片最大尺寸为10M');
         return false;
@@ -282,7 +282,7 @@ export default defineComponent({
       return false;
     };
     //上传图片
-    const changeFileImage = (e: any) => {
+    const changeFileImage = (e) => {
       const files = e.target.files;
       postFilesImages.value = Array.prototype.slice.call(files);
       postFilesImages.value.forEach((file, index) => {
@@ -300,7 +300,7 @@ export default defineComponent({
     };
 
 
-    const postHandleVideo = (file:any) => {
+    const postHandleVideo = (file) => {
       // check maxSize
       if (file.size > 10000 * 1024) {
         message.error('图片最大尺寸为10M');
@@ -332,7 +332,7 @@ export default defineComponent({
     };
 
     //上传图片
-    const changeFileBackg = (e: any) => {
+    const changeFileBackg = (e) => {
       const files = e.target.files;
       const postFiles = Array.prototype.slice.call(files);
       postFiles.forEach((file) => {
@@ -340,7 +340,7 @@ export default defineComponent({
       });
     };
 
-    const uploaderObj = reactive<any>({
+    const uploaderObj = reactive({
       uploader: null,
     });
 
@@ -377,7 +377,7 @@ export default defineComponent({
               url: `${props.fileAction}?${parmamsUrl}`,
               headers: props.headers,
               withCredentials: props.domain === 'evente.cn',
-            }).then((res:any) => {
+            }).then((res) => {
               if (res.data.code === 10000) {
                 const uploadAuth = res.data.data.credentials.uploadAuth;
                 const uploadAddress = res.data.data.credentials.uploadAddress;
@@ -395,7 +395,7 @@ export default defineComponent({
               url: `${props.uploadrefresh}?${parmamsUrl}`,
               headers: props.headers,
               withCredentials: props.domain === 'evente.cn',
-            }).then((res:any) => {
+            }).then((res) => {
               if (res.data.code === 10000) {
                 const uploadAuth = res.data.data.uploadAuth;
                 const uploadAddress = res.data.data.uploadAddress;
@@ -456,7 +456,7 @@ export default defineComponent({
     };
 
      //上传视频
-     const changeFile = (e:any) => {
+     const changeFile = (e) => {
       if (!btnFlag.value) {
         return;
       }
@@ -561,4 +561,4 @@ export default defineComponent({
       changeCheck,
     }
   },
-});
+};

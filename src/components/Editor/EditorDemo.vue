@@ -4,7 +4,7 @@
     <Demo :component="Editor1Demo" />
   </div>
 </template>
-<script lang="ts">
+<script>
 import Demo from "../Demo.vue";
 import Editor1Demo from "./Editor1.demo.vue";
 

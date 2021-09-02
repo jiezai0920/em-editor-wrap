@@ -4,7 +4,7 @@
     <Demo :component="Demo1" />
   </div>
 </template>
-<script lang="ts">
+<script>
 import Demo from "../Demo.vue";
 import Demo1 from "./Demo1.vue";
 

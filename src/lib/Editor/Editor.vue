@@ -17,4 +17,4 @@
     >
   </Material>
 </template>
-<script lang="ts" src="./Editor.ts"></script>
+<script src="./Editor.js"></script>

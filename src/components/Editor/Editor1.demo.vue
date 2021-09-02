@@ -14,7 +14,6 @@
     :binaryUpload="actionUpload"
     @success="success"
   />
-
   <div v-html="bool"></div>
   <Editor
     v-model:value="bool2"
@@ -32,7 +31,7 @@
   <div v-html="bool2"></div>
 </template>
 
-<script lang="ts">
+<script>
 import {ref, reactive} from "vue";
 import { Editor } from "../../lib/index";
 
@@ -84,6 +83,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>

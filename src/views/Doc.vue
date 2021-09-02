@@ -31,10 +31,10 @@
   </div>
 </template>
 <script lang="ts">
-import { inject, onBeforeUnmount, onMounted, Ref } from "vue";
+import { inject, onBeforeUnmount, onMounted, Ref, ref } from "vue";
 export default {
   setup() {
-    const menuVisible = inject<Ref<boolean>>("menuVisible"); // get
+    const menuVisible = inject<Ref<boolean>>("menuVisible", ref(true)); // get
     const hideMenu = () => {
       if (menuVisible.value) {
         menuVisible.value = false;

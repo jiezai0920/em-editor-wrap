@@ -4,7 +4,9 @@
       "module": "esnext",
       "strict": false,
       "jsx": "preserve",
+      "jsxFactory": "vueJsxCompat",
       "moduleResolution": "node"
-    }
-  }
+    },
+    "exclude": ["node_modules", "dist"]
+}
   
