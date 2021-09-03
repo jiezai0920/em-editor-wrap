@@ -10,6 +10,7 @@
       :fileAction="fileAction"
       :uploadrefresh="uploadrefresh"
       :binaryUpload="binaryUpload"
+      :apis="apis"
       @success="success"
       @error="error"
       @close="close"

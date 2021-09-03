@@ -36,25 +36,35 @@ export default {
       default: 'evente.cn',
     },
 
+    //接口请求
+    apis: {
+      type: String,
+      default: 'https://api.dev.mosh.cn/',
+    },
     //素材列表
     materialAction: {
       type: String,
+      default: 'public/material/items',
     },
     //图片上传接口
     imageAction: {
       type: String,
+      default: 'public/material/items',
     },
     //视频/音频上传接口
     fileAction: {
       type: String,
+      default: 'public/upload/media/uptoken',
     },
     //视频/音频上传接口
     uploadrefresh: {
       type: String,
+      default: 'public/upload/media/uptoken/refresh',
     },
     //视频/音频上传接口
     binaryUpload: {
       type: String,
+      default: 'public/upload/image/binary',
     },
   },
   setup(props, { emit }) {
@@ -147,7 +157,7 @@ export default {
       const url = `materialType=${props.category_type}&_page=${currentPage.value}&_limit=6&categoryId=${media_category_id.value}`;
       Axios({
         method: 'get',
-        url: `${props.materialAction}?${url}`,
+        url: `${props.apis}${props.materialAction}?${url}`,
         headers: props.headers,
         withCredentials: props.domain === 'evente.cn',
       }).then((result) => {
@@ -193,7 +203,7 @@ export default {
       loadFlag.value = true;
       Axios({
         method: 'get',
-        url: `${props.menuAction}?materialType=${props.category_type}`,
+        url: `${props.apis}${props.menuAction}?materialType=${props.category_type}`,
         headers: props.headers,
         withCredentials: props.domain === 'evente.cn',
       }).then((res) => {
@@ -240,7 +250,7 @@ export default {
       commiting.value = true;
       Axios({
         method: 'post',
-        url: `${props.imageAction}?${parmamsUrl}`,
+        url: `${props.apis}${props.imageAction}?${parmamsUrl}`,
         headers: props.headers,
         withCredentials: props.domain === 'evente.cn',
       }).then((result) => {
@@ -266,7 +276,7 @@ export default {
       const parmamsUrl = `material_type=images&category_id=${media_category_id.value}`;
       Axios({
         method: 'post',
-        url: `${props.imageAction}?${parmamsUrl}`,
+        url: `${props.apis}${props.imageAction}?${parmamsUrl}`,
         data: formData,
         headers: props.headers,
         withCredentials: props.domain === 'evente.cn',
@@ -314,7 +324,7 @@ export default {
         const parmamsUrl = `materialType=images&category_id=${media_category_id.value}`;
         Axios({
           method: 'post',
-          url: `${props.binaryUpload}?${parmamsUrl}`,
+          url: `${props.apis}${props.binaryUpload}?${parmamsUrl}`,
           data: formData,
           headers: props.headers,
           withCredentials: props.domain === 'evente.cn',
@@ -374,7 +384,7 @@ export default {
             const parmamsUrl = `file_name=${uploadInfo.file.name}`;
             Axios({
               method: 'get',
-              url: `${props.fileAction}?${parmamsUrl}`,
+              url: `${props.apis}${props.fileAction}?${parmamsUrl}`,
               headers: props.headers,
               withCredentials: props.domain === 'evente.cn',
             }).then((res) => {
@@ -392,7 +402,7 @@ export default {
             const parmamsUrl = `vod_id=${uploadInfo.videoId}`;
             Axios({
               method: 'get',
-              url: `${props.uploadrefresh}?${parmamsUrl}`,
+              url: `${props.apis}${props.uploadrefresh}?${parmamsUrl}`,
               headers: props.headers,
               withCredentials: props.domain === 'evente.cn',
             }).then((res) => {

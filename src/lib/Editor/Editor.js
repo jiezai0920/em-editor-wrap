@@ -27,6 +27,7 @@ export default {
     //侧导航接口
     menuAction: {
       type: String,
+      default: 'public/material/category/items',
     },
     headers: {
       type: Object,
@@ -38,25 +39,34 @@ export default {
       type: String,
       default: 'video',
     },
+    apis: {
+      type: String,
+      default: 'https://api.dev.mosh.cn/',
+    },
     //素材列表
     materialAction: {
       type: String,
+      default: 'public/material/items',
     },
     //图片上传接口
     imageAction: {
       type: String,
+      default: 'public/material/items',
     },
     //视频/音频上传接口
     fileAction: {
       type: String,
+      default: 'public/upload/media/uptoken',
     },
     //视频/音频上传接口
     uploadrefresh: {
       type: String,
+      default: 'public/upload/media/uptoken/refresh',
     },
     //视频/音频上传接口
     binaryUpload: {
       type: String,
+      default: 'public/upload/image/binary',
     },
   },
   name: 'Editor',
@@ -69,8 +79,7 @@ export default {
     //静态文件地址
     let UEDITOR_HOME_URL = ref('');
     // UEDITOR_HOME_URL.value = process.env.NODE_ENV === 'development' ? '/UEditor/' : '/UEditor/';
-
-    UEDITOR_HOME_URL.value = '/UEditor/';
+    UEDITOR_HOME_URL.value = props.config.UEDITOR_HOME_URL;
 
     let myConfig = reactive({
       autoHeightEnabled: false,
@@ -108,7 +117,6 @@ export default {
       };
     };
 
-
     const success = (str) => {
       emit('success', str);
     };
@@ -140,7 +148,6 @@ export default {
         emit('update:value', myexplain.value);
       },
     );
-
 
     onMounted(() => {
       Object.assign(myConfig, props.config);
