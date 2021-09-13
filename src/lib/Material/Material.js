@@ -90,7 +90,6 @@ export default {
       video: 500,
     });
 
-
     const uploadText = ref('');
     const uploadTextImage = ref('上传封面');
     const fileNameImg = ref('');
@@ -108,7 +107,6 @@ export default {
     const lastPage = ref(0);
     const pageTotal = ref(0);
     const materialArray = ref([]);
-
 
     const close = () => {
       maskShow.value = false;
@@ -131,7 +129,6 @@ export default {
       close();
     };
     
-
     const resetUp = () => {
       uploadText.value = '上传视频';
       uploadTextImage.value = '上传封面';

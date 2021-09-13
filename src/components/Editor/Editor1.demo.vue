@@ -2,16 +2,12 @@
 <template>
   <Editor
     v-model:value="bool"
-    :config="config"
     :apis="apis"
-    :headers="headers"
     @success="success"
   />
   <div v-html="bool"></div>
   <Editor
     v-model:value="bool2"
-    :config="config"
-    :headers="headers"
     :apis="apis"
   />
   <div v-html="bool2"></div>
@@ -35,9 +31,6 @@ const  actionUpload = `https://api.dev.mosh.cn/public/upload/image/binary`;
 
 const apis = 'https://api.dev.mosh.cn/'
 
-const headers = {
-  'X-Request-Shop-Id': 4,
-}
 export default {
   components: { Editor },
   setup() {
@@ -57,7 +50,6 @@ export default {
       fileAction,
       uploadrefresh,
       actionUpload,
-      headers,
       apis,
       success
     };

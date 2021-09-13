@@ -78,8 +78,25 @@ export default {
     const myexplain =  ref('');
     //静态文件地址
     let UEDITOR_HOME_URL = ref('');
-    // UEDITOR_HOME_URL.value = process.env.NODE_ENV === 'development' ? '/UEditor/' : '/UEditor/';
-    UEDITOR_HOME_URL.value = props.config.UEDITOR_HOME_URL;
+    UEDITOR_HOME_URL.value = props.config && props.config.UEDITOR_HOME_URL || 'https://cdn.dev.mosh.cn/assets/js/ueditor/ueditor-1.0.0/';
+
+    function getCookie(name){
+      var strcookie = document.cookie;//获取cookie字符串
+      var arrcookie = strcookie.split("; ");//分割
+      //遍历匹配
+      for ( var i = 0; i < arrcookie.length; i++) {
+        var arr = arrcookie[i].split("=");
+        if (arr[0] == name){
+          return arr[1];
+        }
+      }
+      return "";
+    }
+
+    const publistHeader = reactive({
+      'Authorization': getCookie('Em-Business-Token'),
+      'X-Request-Shop-Id': getCookie(`${getCookie('Em-Business-Phone')}_X-Request-Em-Business-Shop-Id`),
+    });
 
     let myConfig = reactive({
       autoHeightEnabled: false,
@@ -94,7 +111,6 @@ export default {
     const UEditor = reactive({
       editorInstance: {},
     });
-    const itemKey = ref('');
     const addXiumiDialog = (editorInstance) => {
       UEditor.editorInstance = editorInstance;
       editorInstance.commands.addimgv2 = {
@@ -153,6 +169,8 @@ export default {
       Object.assign(myConfig, props.config);
       categoryType.value = props.category_type;
       myexplain.value = props.value ? props.value : '';
+
+      Object.assign(props.headers, publistHeader);
     });
     return {
       myexplain,
@@ -166,6 +184,7 @@ export default {
       categoryType,
       showPop,
       commitSuccess,
+      publistHeader,
     };
   },
 };
