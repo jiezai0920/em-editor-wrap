@@ -101,6 +101,7 @@ export default {
     let myConfig = reactive({
       autoHeightEnabled: false,
       initialFrameHeight: 440,
+      zIndex: 9,
       initialFrameWidth: '100%',
       UEDITOR_HOME_URL: UEDITOR_HOME_URL.value,
       mode: 'observer',
