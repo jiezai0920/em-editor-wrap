@@ -2,14 +2,6 @@ import { VueUeditorWrap } from 'vue-ueditor-wrap/es/index.js';
 import Material from "../Material/Material.vue";
 import { ref, reactive, onMounted, watch} from 'vue';
 
-const editorDependencies = reactive([
-  'ueditor.config.js',
-  'ueditor.all.js',
-  // 添加秀米相关的资源
-  'xiumi-ue-dialog-v5.js',
-  'xiumi-ue-v5.css',
-]);
-
 export default {
   emits: ['update:value', 'success', 'error', 'close'],
   props:{
@@ -41,7 +33,7 @@ export default {
     },
     apis: {
       type: String,
-      default: 'https://api.dev.mosh.cn/',
+      default: 'https://api.mosh.cn/',
     },
     //素材列表
     materialAction: {
@@ -68,6 +60,10 @@ export default {
       type: String,
       default: 'public/upload/image/binary',
     },
+    ifEditorDependencies: {
+      type: Boolean,
+      default: false,
+    },
   },
   name: 'Editor',
   components: {
@@ -75,10 +71,18 @@ export default {
     Material,
   },
   setup(props, { emit }) {
+    let editorDependencies = reactive([
+      'ueditor.config.js',
+      'ueditor.all.js',
+    ]);
+    if (props.ifEditorDependencies) {
+      editorDependencies.push('xiumi-ue-dialog-v5.js');
+      editorDependencies.push('xiumi-ue-v5.css');
+    }
     const myexplain =  ref('');
     //静态文件地址
     let UEDITOR_HOME_URL = ref('');
-    UEDITOR_HOME_URL.value = props.config && props.config.UEDITOR_HOME_URL || 'https://cdn.dev.mosh.cn/assets/js/ueditor/ueditor-1.0.0/';
+    UEDITOR_HOME_URL.value = props.config && props.config.UEDITOR_HOME_URL || 'https://ecdn.evente.cn/assets/js/ueditor/ueditor-1.0.0/';
 
     function getCookie(name){
       var strcookie = document.cookie;//获取cookie字符串
@@ -147,14 +151,17 @@ export default {
       emit('close');
     };
     const commitSuccess = (data) => {
+      console.log(data)
       if (data.media_type === 'audio') {
-        const str = `<iframe style="width: 100%;border: none;height: 72px;" src="https://cdn.dev.mosh.cn/assets/iframe/ueditor-media/index.html?url=${data.media_meta.media_url}&type=2&name=${data.media_meta.name}" allowfullscreen="true"></iframe>`;
+        // const str = `<iframe width="100%" style="width: 100%;border: none;height: 72px;" src="https://ecdn.evente.cn/assets/iframe/ueditor-media/index.html?url=${data.materialResource.materialUrl}&type=2&name=${data.media_meta.name}" allowfullscreen="true"></iframe>`;
+        const str = `<audio style="width: 100%;border: none;height: 72px;" controls><source src="${data.materialResource.materialUrl}" type="audio/mpeg"><source src="${data.materialResource.materialUrl}" type="audio/mpeg"></audio>`
         UEditor.editorInstance.execCommand('inserthtml', str);
       } else if (data.media_type === 'images') {
-        const str = `<img src="${data.materialResource.materialUrl}" alt="${data.media_meta.name}" title="${data.media_meta.name}"/>`;
+        const str = `<img width="${data.media_meta.dimensions.width}" height="${data.media_meta.dimensions.height}" src="${data.materialResource.materialUrl}" alt="${data.media_meta.name}" title="${data.media_meta.name}"/>`;
         UEditor.editorInstance.execCommand('inserthtml', str);
       } else if (data.media_type === 'video') {
-        const str = `<iframe style="width: 100%;border: none;height: 371px;" src="https://cdn.dev.mosh.cn/assets/iframe/ueditor-media/index.html?url=${data.media_meta.media_url}&type=3" allowfullscreen="true"></iframe>`;
+        // const str = `<iframe width="100%" style="width: 100%;border: none;height: 385px;" src="https://ecdn.evente.cn/assets/iframe/ueditor-media/index.html?url=${data.materialResource.materialUrl}&type=3" allowfullscreen="true"></iframe>`;
+        const str = `<video style="width: 100%;border: none;height: 385px;" src="${data.materialResource.materialUrl}" controls="controls">您的浏览器不支持 video 标签。</video>`;
         UEditor.editorInstance.execCommand('inserthtml', str);
       }
     };

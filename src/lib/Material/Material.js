@@ -39,7 +39,7 @@ export default {
     //接口请求
     apis: {
       type: String,
-      default: 'https://api.dev.mosh.cn/',
+      default: 'https://api.mosh.cn/',
     },
     //素材列表
     materialAction: {

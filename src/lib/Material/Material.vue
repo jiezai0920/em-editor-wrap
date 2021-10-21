@@ -49,7 +49,7 @@
             <!-- 视频 -->
             <div v-if="category_type === 'video'" class="material-pop-box-main-right-videobox">
               <div v-for="(item, index) in materialArray" class="material-pop-box-main-right-videobox-list">
-                <div class="material-pop-box-main-right-videobox-list-box" :style="{backgroundImage: `url(${item.media_meta.poster})`}">
+                <div class="material-pop-box-main-right-videobox-list-box" :style="{backgroundImage: `url(${item.materialResource.materialPoster})`}">
                   <p>
                     <img class="material-pop-box-main-right-videobox-list-box-operating" src="https://3img.evente.cn/00/65/53/ce58fb25932583729759cf4ceb.jpg" alt="">
                   </p>

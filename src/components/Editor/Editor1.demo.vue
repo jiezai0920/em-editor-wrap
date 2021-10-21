@@ -8,6 +8,7 @@
   <div v-html="bool"></div>
   <Editor
     v-model:value="bool2"
+    :ifEditorDependencies="ifEditorDependencies"
     :apis="apis"
   />
   <div v-html="bool2"></div>
@@ -36,6 +37,7 @@ export default {
   setup() {
     const bool = ref('312321');
     const bool2 = ref('222');
+    const ifEditorDependencies = ref(true);
     const success = () => {
       console.log('success')
     }
@@ -50,6 +52,7 @@ export default {
       fileAction,
       uploadrefresh,
       actionUpload,
+      ifEditorDependencies,
       apis,
       success
     };
