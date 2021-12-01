@@ -22,6 +22,12 @@ const Global = `var process = {
 export default {
     // input: 'src/lib/index.ts',
     input: 'src/lib/index.js',
+    external: ['vue', 'axios', '@fe6/water-pro'],
+    globals: {
+        vue: 'Vue',
+        axios: 'Axios',
+        '@fe6/water-pro': '@fe6/water-pro',
+    },
     output: [{
         globals: {
             vue: 'Vue',
@@ -106,5 +112,4 @@ export default {
         //   babelHelpers: 'bundled'
         // }),
     ],
-    external: ["vue", "axios", "@fe6/water-pro"],
 }

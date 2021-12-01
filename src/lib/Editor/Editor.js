@@ -33,7 +33,7 @@ export default {
     },
     apis: {
       type: String,
-      default: 'https://api.mosh.cn/',
+      default: 'https://eapi.evente.cn/',
     },
     //素材列表
     materialAction: {
@@ -154,10 +154,10 @@ export default {
       console.log(data)
       if (data.media_type === 'audio') {
         // const str = `<iframe width="100%" style="width: 100%;border: none;height: 72px;" src="https://ecdn.evente.cn/assets/iframe/ueditor-media/index.html?url=${data.materialResource.materialUrl}&type=2&name=${data.media_meta.name}" allowfullscreen="true"></iframe>`;
-        const str = `<audio style="width: 100%;border: none;height: 72px;" controls><source src="${data.materialResource.materialUrl}" type="audio/mpeg"><source src="${data.materialResource.materialUrl}" type="audio/mpeg"></audio>`
+        const str = `<audio style="width: 100%;border: none;height: 72px;" src="${data.materialResource.materialUrl}" controls="true"></audio>`
         UEditor.editorInstance.execCommand('inserthtml', str);
       } else if (data.media_type === 'images') {
-        const str = `<img width="${data.media_meta.dimensions.width}" height="${data.media_meta.dimensions.height}" src="${data.materialResource.materialUrl}" alt="${data.media_meta.name}" title="${data.media_meta.name}"/>`;
+        const str = `<img style="width:${data.media_meta.dimensions.width}px" mode="widthFix" src="${data.materialResource.materialUrl}" alt="${data.media_meta.name}" title="${data.media_meta.name}"/>`;
         UEditor.editorInstance.execCommand('inserthtml', str);
       } else if (data.media_type === 'video') {
         // const str = `<iframe width="100%" style="width: 100%;border: none;height: 385px;" src="https://ecdn.evente.cn/assets/iframe/ueditor-media/index.html?url=${data.materialResource.materialUrl}&type=3" allowfullscreen="true"></iframe>`;
