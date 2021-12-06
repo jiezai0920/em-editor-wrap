@@ -1,6 +1,6 @@
 {
   "name": "em-ueditor-wrap",
-  "version": "0.2.3",
+  "version": "0.2.7",
   "files": [
     "dist/*",
     "src",
