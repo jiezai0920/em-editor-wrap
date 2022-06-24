@@ -1,6 +1,6 @@
 {
   "name": "em-ueditor-wrap",
-  "version": "0.2.14",
+  "version": "0.2.17",
   "files": [
     "dist/*",
     "src",
@@ -29,7 +29,9 @@
     "axios": "^0.21.1",
     "github-markdown-css": "4.0.0",
     "marked": "1.1.1",
-    "prismjs": "1.21.0"
+    "prismjs": "1.21.0",
+    "vue": "^3.2.7",
+    "vue-router": "4.0.0-beta.3"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
