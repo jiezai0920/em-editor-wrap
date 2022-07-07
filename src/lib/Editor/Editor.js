@@ -64,6 +64,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    env: {
+      type: String,
+      default: 'production',
+    },
   },
   name: 'Editor',
   components: {
@@ -161,7 +165,7 @@ export default {
         UEditor.editorInstance.execCommand('inserthtml', str);
       } else if (data.media_type === 'video') {
         // const str = `<iframe width="100%" style="width: 100%;border: none;height: 385px;" src="https://ecdn.evente.cn/assets/iframe/ueditor-media/index.html?url=${data.materialResource.materialUrl}&type=3" allowfullscreen="true"></iframe>`;
-        const str = `<video style="width: 100%;border: none;height: 385px;" src="${data.materialResource.materialUrl}" controls="controls">您的浏览器不支持 video 标签。</video>`;
+        const str = `<video style="width: 100%;border: none;color:rgba(0,0,0,0)" direction="90" object-fit="contain" poster="${data.materialResource.materialPoster}" src="${data.materialResource.materialUrl}" controls="controls">您的浏览器不支持 video 标签。</video>`;
         UEditor.editorInstance.execCommand('inserthtml', str);
       }
     };
@@ -173,12 +177,27 @@ export default {
       },
     );
 
+    watch(
+      () => props.value,
+      (val) => {
+        myexplain.value = val;
+      },
+    );
+
+    const httpApi = ref('');
+
     onMounted(() => {
       Object.assign(myConfig, props.config);
       categoryType.value = props.category_type;
       myexplain.value = props.value ? props.value : '';
 
       Object.assign(props.headers, publistHeader);
+
+      if (props.env === 'production') {
+        httpApi.value = props.apis;
+      } else {
+        httpApi.value = 'https://api.dev.mosh.cn/';
+      }
     });
     return {
       myexplain,
@@ -193,6 +212,7 @@ export default {
       showPop,
       commitSuccess,
       publistHeader,
+      httpApi,
     };
   },
 };

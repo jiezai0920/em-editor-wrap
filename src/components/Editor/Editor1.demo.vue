@@ -3,6 +3,7 @@
   <Editor
     v-model:value="bool"
     :apis="apis"
+    env="dev"
     @success="success"
   />
   <div v-html="bool"></div>
@@ -15,7 +16,7 @@
 </template>
 
 <script>
-import {ref, reactive} from "vue";
+import {ref, reactive, onMounted} from "vue";
 import { Editor } from "../../lib/index";
 
 const config = {
@@ -41,6 +42,12 @@ export default {
     const success = () => {
       console.log('success')
     }
+
+    onMounted(() => {
+      setTimeout(() => {
+        bool.value = 'dlajkdjaksjdkasjdkadkhueh12udhsu882'
+      }, 5000);
+    })
 
     return {
       bool,

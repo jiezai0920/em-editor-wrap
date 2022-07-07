@@ -197,22 +197,11 @@ $family_us: 'Helvetica', 'PingFangSC-Regular', 'Microsoft YaHei', 'STHeiti', san
               margin-top: 8px;
               width: 100%;
 
-              & .w-checkbox {
-                width: 100%;
-              }
-
-              & .w-checkbox-content {
+              & .ant-checkbox-wrapper {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 width: 100%;
-              }
-
-              & span {
-                font-family: 'PingFangSC-Regular';
-                font-size: 12px;
-                color: #292b2d;
-                margin-left: 8px;
               }
             }
           }
@@ -269,22 +258,11 @@ $family_us: 'Helvetica', 'PingFangSC-Regular', 'Microsoft YaHei', 'STHeiti', san
               align-items: center;
               margin-top: 8px;
 
-              & .w-checkbox {
-                width: 100%;
-              }
-
-              & .w-checkbox-content {
+              & .ant-checkbox-wrapper {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 width: 100%;
-              }
-
-              & span {
-                font-family: 'PingFangSC-Regular';
-                font-size: 12px;
-                color: #292b2d;
-                margin-left: 8px;
               }
             }
           }
@@ -372,22 +350,11 @@ $family_us: 'Helvetica', 'PingFangSC-Regular', 'Microsoft YaHei', 'STHeiti', san
               align-items: center;
               margin-top: 8px;
 
-              & .w-checkbox {
-                width: 100%;
-              }
-
-              & .w-checkbox-content {
+              & .ant-checkbox-wrapper {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 width: 100%;
-              }
-
-              & span {
-                font-family: 'PingFangSC-Regular';
-                font-size: 12px;
-                color: #292b2d;
-                margin-left: 8px;
               }
             }
           }

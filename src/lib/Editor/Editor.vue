@@ -11,7 +11,7 @@
         :fileAction="fileAction"
         :uploadrefresh="uploadrefresh"
         :binaryUpload="binaryUpload"
-        :apis="apis"
+        :apis="httpApi"
         @success="success"
         @error="error"
         @close="close"

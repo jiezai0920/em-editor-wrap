@@ -42,7 +42,7 @@
                   </div>
                 </div>
                 <div class="material-pop-box-main-right-imagebox-list-checkout">
-                  <Checkbox @change="changeCheck(item)" v-model="item.checked">{{item.media_meta.name}}</Checkbox>
+                  <Checkbox @change="changeCheck(item)" v-model:checked="item.checked">{{item.media_meta.name}}</Checkbox>
                 </div>
               </div>
             </div>
@@ -54,8 +54,8 @@
                     <img class="material-pop-box-main-right-videobox-list-box-operating" src="https://3img.evente.cn/00/65/53/ce58fb25932583729759cf4ceb.jpg" alt="">
                   </p>
                 </div>
-                <div class="material-pop-box-main-right-videobox-list-checkout">
-                  <Checkbox @change="changeCheck(item)" v-model="item.checked">{{item.media_meta.name}}</Checkbox>
+                <div :title="item.media_meta.name" class="material-pop-box-main-right-videobox-list-checkout">
+                  <Checkbox @change="changeCheck(item)" v-model:checked="item.checked">{{item.media_meta.name}}</Checkbox>
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@
                   </div>
                 </div>
                 <div class="material-pop-box-main-right-audiobox-list-checkout">
-                  <Checkbox @change="changeCheck(item)" v-model="item.checked">{{item.media_meta.name}}</Checkbox>
+                  <Checkbox @change="changeCheck(item)" v-model:checked="item.checked">{{item.media_meta.name}}</Checkbox>
                 </div>
               </div>
             </div>
